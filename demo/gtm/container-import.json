@@ -1,0 +1,192 @@
+{
+  "exportFormatVersion": 2,
+  "exportTime": "2026-10-07 00:00:00",
+  "containerVersion": {
+    "path": "accounts/0/containers/0/versions/0",
+    "accountId": "0",
+    "containerId": "0",
+    "containerVersionId": "0",
+    "container": {
+      "path": "accounts/0/containers/0",
+      "accountId": "0",
+      "containerId": "0",
+      "name": "Northfold demo",
+      "publicId": "GTM-XXXXXXX",
+      "usageContext": ["WEB"]
+    },
+    "tag": [
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "tagId": "1",
+        "name": "Partner pixel - base script and attribution cookie",
+        "type": "html",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\n  window.plxq = window.plxq || [];\n  window.plxq.push(['attribution', { param: 'plclid', days: 30 }]);\n  (function () {\n    if (window.plx || document.getElementById('plx-lib')) return;\n    var s = document.createElement('script');\n    s.id = 'plx-lib';\n    s.async = true;\n    s.src = 'assets/plx.js';\n    document.head.appendChild(s);\n  })();\n</script>"
+          },
+          { "type": "BOOLEAN", "key": "supportDocumentWrite", "value": "false" }
+        ],
+        "firingTriggerId": ["2147479553"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "tagId": "2",
+        "name": "Partner pixel - conversion with traffic verdict",
+        "type": "html",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\n  window.plxq = window.plxq || [];\n  window.plxq.push(['conversion', {\n    orderId: '{{DLV - confirmation_id}}',\n    productId: '{{DLV - product_id}}'\n  }]);\n</script>"
+          },
+          { "type": "BOOLEAN", "key": "supportDocumentWrite", "value": "false" }
+        ],
+        "firingTriggerId": ["10"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "tagId": "3",
+        "name": "GA4 - partner_conversion",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "partner_conversion" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Measurement ID}}" },
+          {
+            "type": "LIST",
+            "key": "eventSettingsTable",
+            "list": [
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "parameter", "value": "transaction_id" },
+                { "type": "TEMPLATE", "key": "parameterValue", "value": "{{DLV - plx_order_id}}" } ] },
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "parameter", "value": "partner_id" },
+                { "type": "TEMPLATE", "key": "parameterValue", "value": "{{DLV - plx_partner_id}}" } ] },
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "parameter", "value": "traffic_verdict" },
+                { "type": "TEMPLATE", "key": "parameterValue", "value": "{{DLV - plx_verdict}}" } ] },
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "parameter", "value": "traffic_score" },
+                { "type": "TEMPLATE", "key": "parameterValue", "value": "{{DLV - plx_score}}" } ] },
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "parameter", "value": "traffic_signals" },
+                { "type": "TEMPLATE", "key": "parameterValue", "value": "{{DLV - plx_signals}}" } ] }
+            ]
+          }
+        ],
+        "firingTriggerId": ["11"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      }
+    ],
+    "trigger": [
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "triggerId": "10",
+        "name": "Event - application_submitted",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              { "type": "TEMPLATE", "key": "arg0", "value": "{{_event}}" },
+              { "type": "TEMPLATE", "key": "arg1", "value": "application_submitted" }
+            ]
+          }
+        ]
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "triggerId": "11",
+        "name": "Event - partner_conversion",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              { "type": "TEMPLATE", "key": "arg0", "value": "{{_event}}" },
+              { "type": "TEMPLATE", "key": "arg1", "value": "partner_conversion" }
+            ]
+          }
+        ]
+      }
+    ],
+    "variable": [
+      {
+        "accountId": "0", "containerId": "0", "variableId": "20",
+        "name": "GA4 Measurement ID", "type": "c",
+        "parameter": [ { "type": "TEMPLATE", "key": "value", "value": "G-XXXXXXXXXX" } ]
+      },
+      {
+        "accountId": "0", "containerId": "0", "variableId": "21",
+        "name": "DLV - confirmation_id", "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "confirmation_id" }
+        ]
+      },
+      {
+        "accountId": "0", "containerId": "0", "variableId": "22",
+        "name": "DLV - product_id", "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "product_id" }
+        ]
+      },
+      {
+        "accountId": "0", "containerId": "0", "variableId": "23",
+        "name": "DLV - plx_order_id", "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "plx_order_id" }
+        ]
+      },
+      {
+        "accountId": "0", "containerId": "0", "variableId": "24",
+        "name": "DLV - plx_partner_id", "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "plx_partner_id" }
+        ]
+      },
+      {
+        "accountId": "0", "containerId": "0", "variableId": "25",
+        "name": "DLV - plx_verdict", "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "plx_verdict" }
+        ]
+      },
+      {
+        "accountId": "0", "containerId": "0", "variableId": "26",
+        "name": "DLV - plx_score", "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "plx_score" }
+        ]
+      },
+      {
+        "accountId": "0", "containerId": "0", "variableId": "27",
+        "name": "DLV - plx_signals", "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "plx_signals" }
+        ]
+      }
+    ]
+  }
+}

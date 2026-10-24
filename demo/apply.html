@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apply | Northfold Direct Investing</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="apply">
+  <header class="site">
+    <span class="logo">Northfold Direct Investing</span>
+    <span class="fiction">Fictional company, for demonstration only</span>
+  </header>
+
+  <main>
+    <h1>Open your account</h1>
+    <p class="lead">Use made-up details. Nothing leaves this browser.</p>
+
+    <form id="application" class="card" autocomplete="off">
+      <label for="full_name">Full name</label>
+      <input id="full_name" name="full_name" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required>
+
+      <label for="account_type">Account type</label>
+      <select id="account_type" name="account_type" required>
+        <option value="">Choose one</option>
+        <option value="tfsa">Tax-free savings</option>
+        <option value="rrsp">Retirement savings</option>
+        <option value="cash">Cash account</option>
+      </select>
+
+      <div class="trap" aria-hidden="true">
+        <label for="company_website">Company website</label>
+        <input id="company_website" name="company_website" tabindex="-1" data-plx-trap>
+      </div>
+
+      <button class="primary" type="submit">Submit application</button>
+    </form>
+  </main>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

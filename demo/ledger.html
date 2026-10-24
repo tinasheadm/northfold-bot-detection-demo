@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PartnerLedger | Northfold programme</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="ledger">
+  <header class="site">
+    <span class="logo">PartnerLedger &middot; Northfold partner programme</span>
+    <span class="fiction">Mock of a hypothetical partner payout platform</span>
+  </header>
+
+  <main>
+    <div class="tiles">
+      <div class="card tile"><div class="label">Payable</div><div class="value" id="payable-value"></div><div class="count" id="payable-count"></div></div>
+      <div class="card tile"><div class="label">Held for review</div><div class="value" id="held-value"></div><div class="count" id="held-count"></div></div>
+      <div class="card tile"><div class="label">Excluded as bot traffic</div><div class="value" id="excluded-value"></div><div class="count" id="excluded-count"></div></div>
+    </div>
+
+    <h2>By partner</h2>
+    <div class="card"><table id="partners"></table></div>
+
+    <div class="toolbar">
+      <button id="seed">Load sample month</button>
+      <button id="reset">Clear all</button>
+    </div>
+
+    <h2>Conversions received</h2>
+    <div class="card"><table id="conversions"></table></div>
+  </main>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/ledger.js"></script>
+</body>
+</html>

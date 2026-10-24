@@ -1,0 +1,9 @@
+# Publish only the portfolio files. Everything else in this folder
+# (interview brief, notes, PDFs, local tooling) stays private.
+/*
+!/.gitignore
+!/README.md
+!/index.html
+!/demo/
+!/docs/
+.DS_Store
