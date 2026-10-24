@@ -146,5 +146,5 @@ and how the Tag Manager deployment was verified in Tag Assistant.
 ## How it was built
 
 Built as a solutions engineering exercise: one customer problem, one workflow, one outcome. The scenario and
-the tracking approach come from my own experience implementing partner tracking integrations. The code was
-written with AI assistance (Claude), then tested end to end in Safari and through Google Tag Manager.
+the tracking approach come from my own experience implementing partner tracking integrations. It was tested
+end to end in Safari and through Google Tag Manager.
